@@ -1,0 +1,5 @@
+repositories:
+  naoqi_libqi:
+    type: git
+    url: https://github.com/victorpaleologue/libqi.git
+    version: ros2

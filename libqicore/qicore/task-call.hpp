@@ -84,7 +84,8 @@ namespace qi
         AnyReference v = _f.call(nargs);
         _fut = *v.ptr<Future<T> >();
         v.destroy();
-        _fut.connect(boost::bind(&TaskCall<Future<T> >::onResult, this, _1, _live));
+        namespace ph = boost::placeholders;
+        _fut.connect(boost::bind(&TaskCall<Future<T>>::onResult, this, ph::_1, _live));
       }
       catch(const std::exception& e)
       {

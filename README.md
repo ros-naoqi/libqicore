@@ -7,7 +7,18 @@ To compile __naoqi_libqicore__, clone this repository in a ROS workspace and use
 
 Please note that you should checkout the branch corresponding to your ROS distro (eg. `galactic-devel` for Galactic, `foxy-devel` for Foxy, etc...)
 
-## Status 
+## Working from container
+
+You can work on this project from a dev container:
+
+```bash
+docker build -t ros2-naoqi-libqicore --target dev_with_deps_sources .
+docker run --volume=.:/home/user/ws/src/naoqi-libqicore -it ros2-naoqi-libqicore
+```
+
+Edit the [`Dockerfile`](./Dockerfile) to set the target distro you want to work on.
+
+## Status
 The source and binary status reflect the buildfarm builds for this package. The github build specifies wether it is possible to build this project from source, assuming that the upstream packages have been released (`naoqi_libqi`).
 
 ROS Distro | Binary Status | Source Status | Github Build

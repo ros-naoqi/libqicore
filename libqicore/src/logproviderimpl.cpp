@@ -33,6 +33,8 @@ QI_TYPE_INTERFACE(LogProvider);
 
 qiLogCategory("log.provider");
 
+namespace ph = boost::placeholders;
+
 namespace
 {
 const bool debug = (!qi::os::getenv("LOG_DEBUG").empty());
@@ -101,7 +103,7 @@ LogProviderImpl::LogProviderImpl()
 {
   DEBUG("LP subscribed this " << this);
   _subscriber =
-      qi::log::addHandler("remoteLogger", boost::bind(&LogProviderImpl::log, this, _1, _2, _3, _4, _5, _6, _7, _8));
+      qi::log::addHandler("remoteLogger", boost::bind(&LogProviderImpl::log, this, ph::_1, ph::_2, ph::_3, ph::_4, ph::_5, ph::_6, ph::_7, ph::_8));
 
   DEBUG("LP subscribed " << _subscriber);
   silenceQiCategories(_subscriber);
@@ -117,7 +119,7 @@ LogProviderImpl::LogProviderImpl(LogManagerPtr logger)
 {
   DEBUG("LP subscribed this " << this);
   _subscriber =
-      qi::log::addHandler("remoteLogger", boost::bind(&LogProviderImpl::log, this, _1, _2, _3, _4, _5, _6, _7, _8));
+      qi::log::addHandler("remoteLogger", boost::bind(&LogProviderImpl::log, this, ph::_1, ph::_2, ph::_3, ph::_4, ph::_5, ph::_6, ph::_7, ph::_8));
 
   DEBUG("LP subscribed " << _subscriber);
   silenceQiCategories(_subscriber);
@@ -263,7 +265,7 @@ void registerLogProvider(qi::ModuleBuilder* mb)
   mb->advertiseMethod("makeLogProvider", static_cast<LogProviderPtr (*)(LogManagerPtr)>(&makeLogProvider));
   mb->advertiseMethod("makeLogProvider", static_cast<LogProviderPtr (*)()>(&makeLogProvider));
   mb->advertiseMethod("initializeLogging", &initializeLogging);
-  mb->advertiseMethod("initializeLogging", (boost::function<qi::FutureSync<qi::LogProviderPtr> (SessionPtr)>(boost::bind(&initializeLogging, _1, ""))));
+  mb->advertiseMethod("initializeLogging", (boost::function<qi::FutureSync<qi::LogProviderPtr> (SessionPtr)>(boost::bind(&initializeLogging, ph::_1, ""))));
 }
 
 } // !qi
