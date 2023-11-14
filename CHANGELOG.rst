@@ -2,8 +2,8 @@
 Changelog for package naoqi_libqicore
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.0.0 (2023-11-14)
+------------------
 * Remove `rolling` CI
 * Add more testing workflows
 * Add Victor as maintainer
