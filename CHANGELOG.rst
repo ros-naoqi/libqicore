@@ -2,6 +2,12 @@
 Changelog for package naoqi_libqicore
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.0.1 (2026-06-15)
+------------------
+* Support for Jazzy
+* Update status badges
+* Contributors: Victor Paléologue
+
 3.0.0 (2023-11-14)
 ------------------
 * Remove `rolling` CI
